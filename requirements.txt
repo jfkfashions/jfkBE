@@ -9,6 +9,7 @@ psycopg2-binary==2.9.9
 sqlparse==0.5.5
 tzdata==2025.3
 whitenoise==6.6.0
-twilio==8.4.1
+twilio>=9.5.0
+
 
 
