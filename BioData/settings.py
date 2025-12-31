@@ -65,6 +65,8 @@ CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = os.environ.get(
     'CORS_ALLOWED_ORIGINS',
+    'https://jfkfe.vercel.app',
+    'https://jfkbe.onrender.com',
     'http://localhost:3000'
 ).split(',')
 
