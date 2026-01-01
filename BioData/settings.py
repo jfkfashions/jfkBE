@@ -158,8 +158,9 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'jfktailorshop@gmail.com'  # Replace with your email
-EMAIL_HOST_PASSWORD = 'jqqz dhcz atoz jubu'  # Replace with your password
+EMAIL_TIMEOUT = 10
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = 'JFK Tailor Shop <jfktailorshop@gmail.com>'
 
 
