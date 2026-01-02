@@ -348,13 +348,13 @@ def send_email_background(email, subject, message):
     """
     try:
         NotificationService.send_email_notification(
-            user_profile.email,
+            email,
             subject,
             message,
         )
+        print("✅ Email sent to:", email)
     except Exception as e:
-        # Optional: log this instead of print
-        print("Email sending failed:", e)
+        print("❌ Email sending failed:", e)
 
 
 class SendEmailView(generics.GenericAPIView):
