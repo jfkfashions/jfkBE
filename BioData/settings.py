@@ -160,14 +160,23 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # EMAIL_HOST_PASSWORD = 'jqqz dhcz atoz jubu'  # Replace with your password
 # DEFAULT_FROM_EMAIL = 'JFK Tailor Shop <jfktailorshop@gmail.com>'
 
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = "smtp.resend.com"
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = "resend"
+# EMAIL_HOST_PASSWORD = os.environ.get("RESEND_API_KEY")
+# DEFAULT_FROM_EMAIL = "support@jfkfashions.com"
+# DEFAULT_FROM_EMAIL = "JFK Fashion Shop <onboarding@resend.dev>"
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.resend.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_PORT = 465  # Try 465 instead of 587
+EMAIL_USE_SSL = True  # Not TLS for port 465
+EMAIL_USE_TLS = False
 EMAIL_HOST_USER = "resend"
 EMAIL_HOST_PASSWORD = os.environ.get("RESEND_API_KEY")
 DEFAULT_FROM_EMAIL = "support@jfkfashions.com"
-# DEFAULT_FROM_EMAIL = "JFK Fashion Shop <onboarding@resend.dev>"
 
 
 # Twilio settings
