@@ -14,6 +14,8 @@ import os
 from pathlib import Path
 import dj_database_url
 
+from django.core.exceptions import ImproperlyConfigured
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -169,14 +171,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # DEFAULT_FROM_EMAIL = "support@jfkfashions.com"
 # DEFAULT_FROM_EMAIL = "JFK Fashion Shop <onboarding@resend.dev>"
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.resend.com"
-EMAIL_PORT = 465  # Try 465 instead of 587
-EMAIL_USE_SSL = True  # Not TLS for port 465
-EMAIL_USE_TLS = False
-EMAIL_HOST_USER = "resend"
-EMAIL_HOST_PASSWORD = os.environ.get("RESEND_API_KEY")
-DEFAULT_FROM_EMAIL = "support@jfkfashions.com"
+# Get Resend API Key
+RESEND_API_KEY = os.environ.get("RESEND_API_KEY")
+if not RESEND_API_KEY:
+    raise ImproperlyConfigured("RESEND_API_KEY environment variable is not set")
 
 
 # Twilio settings
