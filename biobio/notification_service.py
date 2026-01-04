@@ -7,6 +7,13 @@ import os
 from django.conf import settings
 
 
+import resend
+from django.conf import settings
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 # class NotificationService:
 
 #     @staticmethod
@@ -30,21 +37,46 @@ from django.conf import settings
 
 class NotificationService:
 
+    # @staticmethod
+    # def send_email_notification(to_email, subject, message):
+    #     try:
+    #         send_mail(
+    #             subject=subject,
+    #             message="",  # Plain-text fallback
+    #             from_email=settings.DEFAULT_FROM_EMAIL,
+    #             recipient_list=[to_email],
+    #             html_message=message,  # HTML body
+    #             fail_silently=False,
+    #         )
+    #         return True
+    #     except Exception as e:
+    #         print("❌ Emailx sending failed:", e)
+    #         return FalseFalse
+
     @staticmethod
     def send_email_notification(to_email, subject, message):
+        """
+        Send email notification using Resend API
+        """
         try:
-            send_mail(
-                subject=subject,
-                message="",  # Plain-text fallback
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[to_email],
-                html_message=message,  # HTML body
-                fail_silently=False,
-            )
+            # Send email using Resend API
+            r = resend.Emails.send({
+                "from": settings.DEFAULT_FROM_EMAIL,
+                "to": to_email,
+                "subject": subject,
+                "html": message,
+                "text": "",  # Plain text version (optional)
+            })
+            
+            logger.info(f"✅ Email sent successfully to {to_email}. ID: {r['id']}")
             return True
+            
+        except resend.resend.core.ResendError as e:
+            logger.error(f"❌ Resend API error for {to_email}: {str(e)}")
+            return False
         except Exception as e:
-            print("❌ Emailx sending failed:", e)
-            return FalseFalse
+            logger.error(f"❌ Unexpected error sending email to {to_email}: {str(e)}")
+            return False
 
     @staticmethod
     def send_sms_notification(to_phone, message):
