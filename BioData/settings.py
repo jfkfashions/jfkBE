@@ -168,7 +168,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = "resend"
 # EMAIL_HOST_PASSWORD = os.environ.get("RESEND_API_KEY")
-# DEFAULT_FROM_EMAIL = "support@jfkfashions.com"
+DEFAULT_FROM_EMAIL = "support@jfkfashions.com"
 # DEFAULT_FROM_EMAIL = "JFK Fashion Shop <onboarding@resend.dev>"
 
 # Get Resend API Key
