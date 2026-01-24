@@ -75,7 +75,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = "BioData.urls"
 
-FRONTEND_RESET_URL = "jfkfashions.com"
+FRONTEND_RESET_URL = "jfkfashions.com/reset-password"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
