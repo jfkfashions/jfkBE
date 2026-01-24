@@ -75,6 +75,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = "BioData.urls"
 
+FRONTEND_RESET_URL = "jfkfashions.com"
+
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
