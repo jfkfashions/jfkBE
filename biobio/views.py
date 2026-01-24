@@ -178,7 +178,7 @@ class ForgotPasswordRequestView(APIView):
 
         reset_base = (
             getattr(settings, "FRONTEND_RESET_URL", None)
-            or "http://localhost:3000/reset-password"
+            or "jfkfashions.com/reset-password"
         )
         reset_link = f"{reset_base}?token={token}"
 
